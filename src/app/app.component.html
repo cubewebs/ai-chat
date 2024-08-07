@@ -1,0 +1,66 @@
+
+<div class="chat-container">
+
+  @for (stream of chatStreamsArr(); track stream.id) {
+    @if (stream.outgoing) {
+      <app-chat-outgoing [stream]="stream" />
+    } @else {
+      <app-chat-incoming [stream]="stream" />
+    }
+  } @empty {
+    <h1 class="title">{{title}}</h1>
+    <p class="subtitle">How can I help you today?</p>
+  }
+  <app-typing-animation *ngIf="loading()" />
+<!--  <div class="chat outgoing">
+    <div class="chat-content">
+      <div class="chat-details">
+        <i class="pi pi-user"></i>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consectetur repellendus suscipit. Doloremque eaque eos exercitationem, illo itaque labore laborum, maxime mollitia nemo, non odio officia quam quasi quisquam sequi!</p>
+      </div>
+    </div>
+  </div>
+  <div class="chat incoming">
+    <div class="chat-content">
+      <div class="chat-details">
+        <i class="pi pi-comment"></i>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consectetur repellendus suscipit. Doloremque eaque eos exercitationem, illo itaque labore laborum, maxime mollitia nemo, non odio officia quam quasi quisquam sequi!</p>
+      </div>
+      <i class="pi pi-copy copy" style="font-size: 1rem"></i>
+    </div>
+  </div>
+
+  <div class="chat incoming">
+    <div class="chat-content">
+      <div class="chat-details">
+        <i class="pi pi-comment"></i>
+        <div class="typing-animation">
+          <div class="typing-dot" style="&#45;&#45;delay: 0.2s"></div>
+          <div class="typing-dot" style="&#45;&#45;delay: 0.3s"></div>
+          <div class="typing-dot" style="&#45;&#45;delay: 0.4s"></div>
+        </div>
+      </div>
+      <i class="pi pi-copy copy" style="font-size: 1rem"></i>
+    </div>
+  </div>-->
+
+</div>
+
+<!--prompt container-->
+<div class="typing-container">
+  <div class="typing-content">
+    <div class="typing-textarea">
+      <textarea #promptTextarea name="chat-input" id="chat-input" placeholder="Enter your prompt here..." required></textarea>
+      <i (click)="handleOutgoingChat(promptTextarea.value)" class="pi pi-send send" style="font-size: 1rem"></i>
+    </div>
+    <div class="typing-controls">
+      <i (click)="onLightMode()" id="theme-btn" class="pi {{themeMode()}} light" style="font-size: 1rem"></i>
+      <i (click)="onDeleteChatStream()" id="delete-btn" class="pi pi-trash delete" style="font-size: 1rem"></i>
+    </div>
+  </div>
+</div>
+<p-toast styleClass="toast-style" />
+<p-confirmDialog
+  key="positionDialog"
+  position="bottom"
+  rejectButtonStyleClass="p-button-outlined" />

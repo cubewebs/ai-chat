@@ -1,0 +1,11 @@
+
+<div class="chat incoming">
+  <div class="chat-content">
+    <div class="chat-details">
+      <img src="assets/img/gemini-logo.png" alt="gemini logo">
+      <p #streamText>{{ stream()?.text }}</p>
+    </div>
+    <i (click)="onCopyStream(streamText.innerText)" class="pi {{copyIcon}}" style="font-size: 1rem"></i>
+  </div>
+</div>
+
