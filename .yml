@@ -1,0 +1,2 @@
+- name: Angular Full CI
+  uses: colbyhill21/angular-full-ci@v1.0
